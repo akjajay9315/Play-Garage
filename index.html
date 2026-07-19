@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperHero Toy Store - Premium Action Figures & Collectibles</title>
+    <!-- Meta Descriptions for SEO -->
+    <meta name="description" content="Shop similar premium action figures, statues, Legos, and collectibles. The ultimate destination for Marvel, DC, Anime, and pop culture fans with a simplistic red & black dark theme.">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- Top Promo & Settings Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                <a href="mailto:contact@superherostore.com">📧 contact@superherostore.com</a>
+                <span>📞 +91-7304020923 (10 AM - 6 PM)</span>
+            </div>
+            <div class="top-bar-promo">
+                ⚡ FREE DELIVERY ON ALL ORDERS ABOVE INR 1499/- ⚡
+            </div>
+            <div class="top-bar-right">
+                <a href="#" class="top-bar-link" id="top-blog-link">Blogs</a>
+                <!-- Theme Toggle Switch -->
+                <div class="theme-switch-wrapper">
+                    <span>💡 Mode</span>
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header (Sticky) -->
+    <header class="main-header">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a href="#" class="logo" data-link="home">
+                <div class="logo-symbol">
+                    <i data-lucide="shield-alert"></i>
+                </div>
+                <span>SUPERHERO<span class="text-accent">STORE</span></span>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Action Figures">Action Figures</a></li>
+                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Lego">Lego</a></li>
+                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Statues">Statues</a></li>
+                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Cars & Bikes">Cars & Bikes</a></li>
+                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="theme" data-filter-val="Limited Edition">Limited Edition</a></li>
+            </ul>
+
+            <!-- Search Bar Container -->
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" class="search-input" id="global-search-input" placeholder="Search characters, brands or categories..." autocomplete="off">
+                </div>
+                <!-- Search Suggestions Autocomplete -->
+                <div class="search-suggestions" id="search-suggestions-box"></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="header-actions">
+                <button class="header-btn" id="account-btn" title="Account">
+                    <i data-lucide="user"></i>
+                </button>
+                <button class="header-btn" id="cart-drawer-toggle" title="Cart">
+                    <i data-lucide="shopping-bag"></i>
+                    <span class="cart-badge" id="header-cart-count">0</span>
+                </button>
+                <button class="header-btn mobile-menu-btn" id="mobile-menu-toggle" title="Menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN VIEW CONTAINER -->
+    <main>
+
+        <!-- 1. HOME VIEW -->
+        <section id="home-view" class="view-section active-view">
+            <div class="container">
+                
+                <!-- Hero Slider Section -->
+                <div class="hero-carousel" id="main-hero-carousel">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active" data-slide-index="0">
+                        <img src="assets/hero-banner.png" alt="Exclusive Action Figures Display" class="carousel-img">
+                        <div class="carousel-overlay">
+                            <div class="carousel-content">
+                                <span class="carousel-tag">Featured Release</span>
+                                <h2 class="carousel-title">Fondjoy Superman 2.0</h2>
+                                <p class="carousel-desc">Experience hyper-articulation and premium detailing. Secure the ultimate Man of Steel for your collection today.</p>
+                                <button class="btn-primary" data-link="detail" data-product-id="1">
+                                    Shop Now <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide" data-slide-index="1">
+                        <img src="assets/hero-banner.png" alt="Anime Collectibles Banner" class="carousel-img" style="filter: hue-rotate(180deg) brightness(0.85);">
+                        <div class="carousel-overlay">
+                            <div class="carousel-content">
+                                <span class="carousel-tag">Best Selling Anime</span>
+                                <h2 class="carousel-title">S.H. Figuarts Goku</h2>
+                                <p class="carousel-desc">Recreate legendary battles with high-fidelity articulation, alternative expressions and signature energy effects.</p>
+                                <button class="btn-primary" data-link="detail" data-product-id="3">
+                                    Shop Collection <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carousel Controls -->
+                    <button class="carousel-arrow carousel-arrow-prev" id="hero-prev"><i data-lucide="chevron-left"></i></button>
+                    <button class="carousel-arrow carousel-arrow-next" id="hero-next"><i data-lucide="chevron-right"></i></button>
+                </div>
+
+                <!-- Category Shortcuts -->
+                <div class="category-circles">
+                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Action Figures">
+                        <div class="circle-img-wrapper">
+                            <i data-lucide="swords" style="width:36px;height:36px;"></i>
+                        </div>
+                        <span class="circle-label">Action Figures</span>
+                    </div>
+                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Statues">
+                        <div class="circle-img-wrapper">
+                            <i data-lucide="shapes" style="width:36px;height:36px;"></i>
+                        </div>
+                        <span class="circle-label">Statues</span>
+                    </div>
+                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Lego">
+                        <div class="circle-img-wrapper">
+                            <i data-lucide="component" style="width:36px;height:36px;"></i>
+                        </div>
+                        <span class="circle-label">Lego Sets</span>
+                    </div>
+                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Cars & Bikes">
+                        <div class="circle-img-wrapper">
+                            <i data-lucide="car-front" style="width:36px;height:36px;"></i>
+                        </div>
+                        <span class="circle-label">Cars & Bikes</span>
+                    </div>
+                </div>
+
+                <!-- Shop By Theme -->
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">Shop by Theme</h2>
+                    <a href="#" class="section-view-all" data-link="catalog">View All Themes <i data-lucide="chevron-right"></i></a>
+                </div>
+                <div class="themes-grid">
+                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="Marvel">
+                        <div class="theme-card-overlay">
+                            <h3 class="theme-card-title">Marvel</h3>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #e50914, #121212); width:100%; height:100%;" class="theme-card-img"></div>
+                    </div>
+                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="DC Comics">
+                        <div class="theme-card-overlay">
+                            <h3 class="theme-card-title">DC Comics</h3>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #0d47a1, #121212); width:100%; height:100%;" class="theme-card-img"></div>
+                    </div>
+                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="Anime">
+                        <div class="theme-card-overlay">
+                            <h3 class="theme-card-title">Anime</h3>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #e65100, #121212); width:100%; height:100%;" class="theme-card-img"></div>
+                    </div>
+                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="Disney">
+                        <div class="theme-card-overlay">
+                            <h3 class="theme-card-title">Disney</h3>
+                        </div>
+                        <div style="background: linear-gradient(135deg, #4a148c, #121212); width:100%; height:100%;" class="theme-card-img"></div>
+                    </div>
+                </div>
+
+                <!-- Collection Row 1: New Releases -->
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">New Launches</h2>
+                    <a href="#" class="section-view-all" data-link="catalog">View All <i data-lucide="chevron-right"></i></a>
+                </div>
+                <div class="product-grid" id="new-launches-grid">
+                    <!-- Rendered Dynamically via app.js -->
+                </div>
+
+                <!-- Collection Row 2: Best Selling Action Figures -->
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">Best Sellers</h2>
+                    <a href="#" class="section-view-all" data-link="catalog" data-filter-type="category" data-filter-val="Action Figures">View All <i data-lucide="chevron-right"></i></a>
+                </div>
+                <div class="product-grid" id="bestsellers-grid">
+                    <!-- Rendered Dynamically via app.js -->
+                </div>
+
+                <!-- Shop by Brand -->
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">Popular Brands</h2>
+                </div>
+                <div class="brands-row">
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Fondjoy">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">FONDJOY</span>
+                    </div>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="ZD Toys">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">ZD TOYS</span>
+                    </div>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Bandai">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">BANDAI</span>
+                    </div>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="McFarlane">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">MCFARLANE</span>
+                    </div>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Iron Studios">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">IRON STUDIOS</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. CATALOG / FILTER VIEW -->
+        <section id="catalog-view" class="view-section">
+            <div class="container">
+                <div class="catalog-layout">
+                    
+                    <!-- Sidebar Filters -->
+                    <aside class="catalog-sidebar">
+                        
+                        <!-- Category Filter -->
+                        <div class="filter-section">
+                            <h3 class="filter-title">Category</h3>
+                            <ul class="filter-list" id="category-filter-list">
+                                <!-- Checked input filters generated by Javascript -->
+                            </ul>
+                        </div>
+
+                        <!-- Theme Filter -->
+                        <div class="filter-section">
+                            <h3 class="filter-title">Theme</h3>
+                            <ul class="filter-list" id="theme-filter-list">
+                                <!-- Themes checked inputs generated by Javascript -->
+                            </ul>
+                        </div>
+
+                        <!-- Brand Filter -->
+                        <div class="filter-section">
+                            <h3 class="filter-title">Brand</h3>
+                            <ul class="filter-list" id="brand-filter-list">
+                                <!-- Brand checked inputs generated by Javascript -->
+                            </ul>
+                        </div>
+
+                        <!-- Price Range Filter -->
+                        <div class="filter-section">
+                            <h3 class="filter-title">Price Range (INR)</h3>
+                            <div class="price-range-inputs">
+                                <input type="number" id="price-min" placeholder="Min" min="0">
+                                <span class="price-range-divider">-</span>
+                                <input type="number" id="price-max" placeholder="Max" min="0">
+                            </div>
+                            <button class="btn-primary price-filter-btn" id="apply-price-filter">Apply Price</button>
+                        </div>
+
+                        <!-- Reset Button -->
+                        <button class="btn-secondary" style="width:100%;" id="clear-filters-btn">Clear All Filters</button>
+
+                    </aside>
+
+                    <!-- Catalog Main Grid -->
+                    <div class="catalog-main">
+                        <div class="catalog-header">
+                            <div class="catalog-results-count" id="results-count-text">Showing all products</div>
+                            
+                            <div class="catalog-sort-wrapper">
+                                <span>Sort By:</span>
+                                <select class="catalog-sort-select" id="catalog-sort-select">
+                                    <option value="featured">Featured</option>
+                                    <option value="price-low">Price: Low to High</option>
+                                    <option value="price-high">Price: High to Low</option>
+                                    <option value="rating">Best Rating</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Main Grid List -->
+                        <div class="catalog-grid" id="catalog-products-grid">
+                            <!-- Populated Dynamically -->
+                        </div>
+
+                        <!-- Catalog Empty State -->
+                        <div class="catalog-empty" id="catalog-empty-view">
+                            <i data-lucide="package-search" style="width: 64px; height: 64px; stroke-width: 1;"></i>
+                            <h3>No Products Found</h3>
+                            <p>We couldn't find any products matching your filters or search query. Try broadening your terms or clearing the active filters.</p>
+                            <button class="btn-primary" id="catalog-empty-reset">Reset All Filters</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PRODUCT DETAIL VIEW -->
+        <section id="detail-view" class="view-section">
+            <div class="container">
+                <!-- Breadcrumbs -->
+                <div class="detail-breadcrumbs" id="detail-breadcrumbs-box">
+                    <!-- Generated Dynamically -->
+                </div>
+
+                <!-- Detail Content -->
+                <div class="detail-layout">
+                    <!-- Left: Media Column -->
+                    <div class="detail-media">
+                        <!-- Vertical Thumbnails -->
+                        <div class="detail-thumbnails" id="product-detail-thumbnails">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <!-- Main Preview Container -->
+                        <div class="detail-main-image-wrapper">
+                            <img src="" alt="" class="detail-main-image" id="product-detail-main-img">
+                        </div>
+                    </div>
+
+                    <!-- Right: Info Details -->
+                    <div class="detail-info">
+                        <span class="detail-theme-tag" id="product-detail-theme">Theme</span>
+                        <h1 class="detail-title" id="product-detail-title">Product Title Details</h1>
+                        
+                        <div class="detail-meta-row">
+                            <div class="detail-rating">
+                                <span id="product-detail-stars"></span>
+                                <span class="rating-count" id="product-detail-rating-text">(0 reviews)</span>
+                            </div>
+                            <span class="separator">|</span>
+                            <span>Brand: <strong class="text-accent" id="product-detail-brand">Vendor</strong></span>
+                        </div>
+
+                        <div class="detail-price-box">
+                            <span class="detail-current-price" id="product-detail-price">₹0</span>
+                            <span class="detail-original-price" id="product-detail-old-price">₹0</span>
+                            <span class="detail-discount-tag" id="product-detail-discount">-0% OFF</span>
+                        </div>
+
+                        <p class="detail-desc" id="product-detail-desc">
+                            Description text for the active product goes here.
+                        </p>
+
+                        <!-- Purchase Box -->
+                        <div class="detail-purchase-box">
+                            <div class="detail-stock-status">
+                                <span class="stock-dot in-stock" id="product-detail-stock-dot"></span>
+                                <span id="product-detail-stock-label">In Stock (Ready to Ship)</span>
+                            </div>
+
+                            <div class="detail-qty-row">
+                                <span class="qty-label">Quantity:</span>
+                                <div class="qty-selector">
+                                    <button class="qty-btn" id="detail-qty-minus"><i data-lucide="minus"></i></button>
+                                    <input type="number" class="qty-input" id="detail-qty-input" value="1" min="1">
+                                    <button class="qty-btn" id="detail-qty-plus"><i data-lucide="plus"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="detail-actions">
+                                <button class="btn-primary" id="detail-add-to-cart-btn">
+                                    <i data-lucide="shopping-cart"></i> Add to Cart
+                                </button>
+                                <button class="btn-secondary" id="detail-buy-now-btn">
+                                    Buy It Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Technical Specs Table -->
+                        <div class="detail-specs">
+                            <h3 class="detail-specs-title">Product Specifications</h3>
+                            <table class="specs-table">
+                                <tr>
+                                    <td class="specs-label">Material</td>
+                                    <td class="specs-value" id="spec-material">Premium PVC / ABS</td>
+                                </tr>
+                                <tr>
+                                    <td class="specs-label">Dimensions</td>
+                                    <td class="specs-value" id="spec-dimensions">approx. 7 inches height</td>
+                                </tr>
+                                <tr>
+                                    <td class="specs-label">Package Weight</td>
+                                    <td class="specs-value" id="spec-weight">450g</td>
+                                </tr>
+                                <tr>
+                                    <td class="specs-label">Articulation</td>
+                                    <td class="specs-value" id="spec-articulation">Over 20+ Joints Articulated</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Related Products Section -->
+                <div class="related-products">
+                    <div class="section-title-wrapper">
+                        <h2 class="section-title">Related Collectibles</h2>
+                    </div>
+                    <div class="product-grid" id="related-products-grid">
+                        <!-- Populated via Javascript -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. CHECKOUT VIEW -->
+        <section id="checkout-view" class="view-section">
+            <div class="container">
+                
+                <div class="checkout-layout" id="checkout-main-layout">
+                    
+                    <!-- Checkout Forms -->
+                    <div class="checkout-form-box">
+                        
+                        <!-- Step 1: Customer Contact -->
+                        <div class="checkout-step-section">
+                            <h2 class="checkout-step-title">
+                                <span class="checkout-step-num">1</span> Customer Contact
+                            </h2>
+                            <div class="form-group">
+                                <label for="checkout-email">Email Address *</label>
+                                <input type="email" id="checkout-email" class="form-input" placeholder="you@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkout-phone">Mobile Number *</label>
+                                <input type="tel" id="checkout-phone" class="form-input" placeholder="+91 98765 43210" required>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Shipping Details -->
+                        <div class="checkout-step-section">
+                            <h2 class="checkout-step-title">
+                                <span class="checkout-step-num">2</span> Shipping Destination
+                            </h2>
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label for="shipping-first-name">First Name *</label>
+                                    <input type="text" id="shipping-first-name" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping-last-name">Last Name *</label>
+                                    <input type="text" id="shipping-last-name" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shipping-address">Delivery Address *</label>
+                                <input type="text" id="shipping-address" class="form-input" placeholder="Apartment, suite, unit, building, street address" required>
+                            </div>
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label for="shipping-city">City *</label>
+                                    <input type="text" id="shipping-city" class="form-input" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="shipping-state">State *</label>
+                                    <input type="text" id="shipping-state" class="form-input" placeholder="e.g. Maharashtra" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shipping-pincode">Postal / Pincode *</label>
+                                <input type="text" id="shipping-pincode" class="form-input" placeholder="400001" required>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Payment Preferences -->
+                        <div class="checkout-step-section">
+                            <h2 class="checkout-step-title">
+                                <span class="checkout-step-num">3</span> Select Payment Option
+                            </h2>
+                            <div class="payment-methods">
+                                <label class="payment-radio-wrapper">
+                                    <input type="radio" name="payment-option" value="cod" checked>
+                                    <span class="custom-radio"><span class="custom-radio-inner"></span></span>
+                                    <div class="payment-info">
+                                        <span class="payment-title">Cash on Delivery (COD)</span>
+                                        <span class="payment-desc">Pay in cash upon physical delivery. Extra ₹49 handling fee applies.</span>
+                                    </div>
+                                </label>
+                                <label class="payment-radio-wrapper">
+                                    <input type="radio" name="payment-option" value="upi">
+                                    <span class="custom-radio"><span class="custom-radio-inner"></span></span>
+                                    <div class="payment-info">
+                                        <span class="payment-title">UPI (GPay / PhonePe / Paytm)</span>
+                                        <span class="payment-desc">Pay instantly using any UPI app. Free express shipping included.</span>
+                                    </div>
+                                </label>
+                                <label class="payment-radio-wrapper">
+                                    <input type="radio" name="payment-option" value="card">
+                                    <span class="custom-radio"><span class="custom-radio-inner"></span></span>
+                                    <div class="payment-info">
+                                        <span class="payment-title">Credit / Debit Card</span>
+                                        <span class="payment-desc">All major cards accepted via secure 256-bit encrypted gateway.</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Column: Checkout Summary -->
+                    <div class="checkout-summary-box">
+                        <h3 class="checkout-summary-title">Summary of Order</h3>
+                        
+                        <!-- List of Checkout items -->
+                        <div class="checkout-summary-items" id="checkout-summary-items-list">
+                            <!-- Populated via Javascript -->
+                        </div>
+
+                        <!-- Promo Code Input -->
+                        <div class="promo-code-box">
+                            <input type="text" class="form-input promo-input" id="promo-code-input" placeholder="Discount Code (e.g. SUPER10)">
+                            <button class="btn-secondary" id="apply-promo-btn">Apply</button>
+                        </div>
+
+                        <!-- Price Breakdown -->
+                        <div class="checkout-totals">
+                            <div class="checkout-total-row">
+                                <span>Cart Subtotal</span>
+                                <span id="checkout-subtotal">₹0</span>
+                            </div>
+                            <div class="checkout-total-row">
+                                <span>Delivery Fee</span>
+                                <span id="checkout-delivery">₹0</span>
+                            </div>
+                            <div class="checkout-total-row" id="checkout-cod-row">
+                                <span>COD Convenience Charge</span>
+                                <span id="checkout-cod-charge">₹49</span>
+                            </div>
+                            <div class="checkout-total-row" id="checkout-discount-row" style="display:none; color:var(--discount-bg); font-weight:600;">
+                                <span>Coupon Saving (10%)</span>
+                                <span id="checkout-discount-val">-₹0</span>
+                            </div>
+                            <div class="checkout-total-row checkout-grand-total">
+                                <span>Grand Total</span>
+                                <span class="checkout-grand-total-val" id="checkout-grand-total">₹0</span>
+                            </div>
+                        </div>
+
+                        <!-- Complete Order CTA -->
+                        <button class="btn-primary btn-place-order" id="place-order-btn">
+                            Complete Order & Pay
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Order Success / Confirmation State (Hidden initially) -->
+                <div class="order-success-box" id="order-success-view" style="display:none;">
+                    <div class="success-icon-wrapper">
+                        <i data-lucide="check-circle-2" style="width: 48px; height: 48px; stroke-width: 2.5;"></i>
+                    </div>
+                    <h2>Order Placed Successfully!</h2>
+                    <p>Thank you for shopping with us. Your order has been registered under invoice code <strong>#SHT-<span id="success-invoice-id">129481</span></strong>. A confirmation email has been dispatched with delivery tracking particulars.</p>
+                    
+                    <div class="order-details-summary">
+                        <div class="success-summary-row">
+                            <span>Delivery Destination</span>
+                            <span id="success-shipping-name">Bruce Wayne, Gotham City</span>
+                        </div>
+                        <div class="success-summary-row">
+                            <span>Settlement Method</span>
+                            <span id="success-payment-method">Cash on Delivery</span>
+                        </div>
+                        <div class="success-summary-row">
+                            <span>Amount Settled</span>
+                            <span class="text-accent" id="success-final-price">₹0</span>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" data-link="home">
+                        <i data-lucide="home"></i> Back to Homepage
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!--persistent slide-out CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay">
+        <div class="cart-drawer">
+            <div class="cart-drawer-header">
+                <h3 class="cart-drawer-title">
+                    <i data-lucide="shopping-cart" class="text-accent"></i> Shopping Cart (<span id="cart-drawer-count">0</span>)
+                </h3>
+                <button class="cart-drawer-close" id="cart-drawer-close-btn">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+
+            <!-- Scrollable list of items -->
+            <div class="cart-items-panel" id="cart-drawer-items-list">
+                <!-- Cart items rendered here via app.js -->
+            </div>
+
+            <!-- Drawer Footer containing summary and CTA -->
+            <div class="cart-drawer-footer">
+                <div class="cart-summary-row">
+                    <span>Subtotal</span>
+                    <span style="font-weight: 700;" id="cart-drawer-subtotal">₹0</span>
+                </div>
+                <div class="cart-summary-row cart-savings-row" id="cart-drawer-savings-row" style="display:none;">
+                    <span>Total Coupon Savings</span>
+                    <span id="cart-drawer-savings">₹0</span>
+                </div>
+                <div class="cart-summary-row" style="color:var(--text-secondary); font-size:0.75rem;">
+                    <span>Delivery charges & taxes calculated at checkout.</span>
+                </div>
+                <button class="btn-primary cart-checkout-btn" id="cart-checkout-trigger">
+                    Proceed to Checkout <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN FOOTER SECTION -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- About Col -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">SUPERHERO STORE</h3>
+                    <p class="footer-about-text">
+                        The ultimate ecommerce destination for action figures, premium statue maquettes, replicas and rare collectable toys. Built with passion for collectors globally.
+                    </p>
+                    <div class="footer-social-links">
+                        <a href="#" class="footer-social-btn"><i data-lucide="facebook"></i></a>
+                        <a href="#" class="footer-social-btn"><i data-lucide="instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i data-lucide="twitter"></i></a>
+                        <a href="#" class="footer-social-btn"><i data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick links Col -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Information</h3>
+                    <ul class="footer-links-list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns & Cancellations</a></li>
+                        <li><a href="#">COD & Payments FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Frequent Searches Cloud -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Popular Searches</h3>
+                    <div class="footer-tags-cloud">
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Iron Man">Iron Man</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Batman">Batman</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Goku">Goku</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Superman">Superman</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Lego Marvel">Lego Marvel</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Spider-Man">Spider-Man</a>
+                    </div>
+                </div>
+
+                <!-- Contact & Support Info -->
+                <div class="footer-col">
+                    <h3 class="footer-col-title">Store Support</h3>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>Golu Studios HQ, Sector 15, Vashi, Navi Mumbai, MH, IN</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="mail"></i>
+                        <span>support@superherostore.com</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone"></i>
+                        <span>+91-7304020923</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer copyright bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 SuperHero Toy Store Replica. Developed in Pair Programming with Antigravity AI.</p>
+                <div class="footer-payments-list">
+                    <i data-lucide="credit-card" title="Cards"></i>
+                    <i data-lucide="smartphone" title="UPI Apps"></i>
+                    <i data-lucide="truck" title="Cash on Delivery"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="global-toast-container"></div>
+
+    <!-- Main Logic Script -->
+    <script src="app.js"></script>
+</body>
+</html>
