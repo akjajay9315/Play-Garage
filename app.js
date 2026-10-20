@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 Weight: "450g",
                 Features: "Gullwing doors, LED lights & sound, pull-back action"
             },
-            images: gallery("mercedes-amg-vision-gt", 10)
+            images: gallery("mercedes-amg-vision-gt", 9)
         },
         {
             id: 102,
