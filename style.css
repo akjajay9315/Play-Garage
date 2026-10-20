@@ -1,5 +1,5 @@
 /*
- * SuperHero Toy Store - Design System & Stylesheet
+ * PlayingGarage - Design System & Stylesheet
  * Custom CSS with Premium Dark/Light Themes
  */
 
@@ -978,17 +978,24 @@ body.light-theme .card-btn {
 
 .brand-logo-card {
     flex: 0 0 auto;
-    width: 140px;
+    min-width: 140px;
     height: 70px;
+    white-space: nowrap;
     background-color: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
+    padding: 12px 20px;
     transition: border-color var(--transition-fast), transform var(--transition-fast);
     cursor: pointer;
+}
+
+.brand-logo-card svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
 }
 
 .brand-logo-card svg {

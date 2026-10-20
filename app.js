@@ -1,5 +1,5 @@
 /*
- * SuperHero Toy Store - Core JS Application Logic
+ * PlayingGarage - Core JS Application Logic
  * Single Page E-Commerce Flow, Cart State, and Theme Engine
  */
 
