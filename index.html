@@ -50,18 +50,17 @@
 
             <!-- Desktop Nav Menu -->
             <ul class="nav-menu">
-                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Action Figures">Action Figures</a></li>
-                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Lego">Lego</a></li>
-                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Statues">Statues</a></li>
-                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Cars & Bikes">Cars & Bikes</a></li>
-                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="theme" data-filter-val="Limited Edition">Limited Edition</a></li>
+                <li><a href="#" class="nav-link" data-link="catalog">All Cars</a></li>
+                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Supercars">Supercars</a></li>
+                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Hypercars">Hypercars</a></li>
+                <li><a href="#" class="nav-link" data-link="catalog" data-filter-type="category" data-filter-val="Classic Cars">Classic Cars</a></li>
             </ul>
 
             <!-- Search Bar Container -->
             <div class="search-container">
                 <div class="search-input-wrapper">
                     <i data-lucide="search" class="search-icon"></i>
-                    <input type="text" class="search-input" id="global-search-input" placeholder="Search characters, brands or categories..." autocomplete="off">
+                    <input type="text" class="search-input" id="global-search-input" placeholder="Search cars, brands or categories..." autocomplete="off">
                 </div>
                 <!-- Search Suggestions Autocomplete -->
                 <div class="search-suggestions" id="search-suggestions-box"></div>
@@ -94,13 +93,13 @@
                 <div class="hero-carousel" id="main-hero-carousel">
                     <!-- Slide 1 -->
                     <div class="carousel-slide active" data-slide-index="0">
-                        <img src="assets/hero-banner.png" alt="Exclusive Action Figures Display" class="carousel-img">
+                        <img src="assets/products/mercedes-amg-vision-gt/1.jpg" alt="Mercedes-AMG Vision GT diecast model car" class="carousel-img">
                         <div class="carousel-overlay">
                             <div class="carousel-content">
                                 <span class="carousel-tag">Featured Release</span>
-                                <h2 class="carousel-title">Fondjoy Superman 2.0</h2>
-                                <p class="carousel-desc">Experience hyper-articulation and premium detailing. Secure the ultimate Man of Steel for your collection today.</p>
-                                <button class="btn-primary" data-link="detail" data-product-id="1">
+                                <h2 class="carousel-title">Mercedes-AMG Vision GT</h2>
+                                <p class="carousel-desc">Gloss black with chrome gold wheels, working gullwing doors and glowing LED lights. A showpiece for any collection.</p>
+                                <button class="btn-primary" data-link="detail" data-product-id="101">
                                     Shop Now <i data-lucide="arrow-right"></i>
                                 </button>
                             </div>
@@ -108,13 +107,13 @@
                     </div>
                     <!-- Slide 2 -->
                     <div class="carousel-slide" data-slide-index="1">
-                        <img src="assets/hero-banner.png" alt="Anime Collectibles Banner" class="carousel-img" style="filter: hue-rotate(180deg) brightness(0.85);">
+                        <img src="assets/products/pagani-huayra/1.jpg" alt="Pagani Huayra diecast model car" class="carousel-img">
                         <div class="carousel-overlay">
                             <div class="carousel-content">
-                                <span class="carousel-tag">Best Selling Anime</span>
-                                <h2 class="carousel-title">S.H. Figuarts Goku</h2>
-                                <p class="carousel-desc">Recreate legendary battles with high-fidelity articulation, alternative expressions and signature energy effects.</p>
-                                <button class="btn-primary" data-link="detail" data-product-id="3">
+                                <span class="carousel-tag">Hypercar Collection</span>
+                                <h2 class="carousel-title">Pagani Huayra</h2>
+                                <p class="carousel-desc">Purple carbon finish, opening gullwing doors and engine cover, and a fully detailed red leather cockpit.</p>
+                                <button class="btn-primary" data-link="detail" data-product-id="104">
                                     Shop Collection <i data-lucide="arrow-right"></i>
                                 </button>
                             </div>
@@ -128,59 +127,59 @@
 
                 <!-- Category Shortcuts -->
                 <div class="category-circles">
-                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Action Figures">
-                        <div class="circle-img-wrapper">
-                            <i data-lucide="swords" style="width:36px;height:36px;"></i>
-                        </div>
-                        <span class="circle-label">Action Figures</span>
-                    </div>
-                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Statues">
-                        <div class="circle-img-wrapper">
-                            <i data-lucide="shapes" style="width:36px;height:36px;"></i>
-                        </div>
-                        <span class="circle-label">Statues</span>
-                    </div>
-                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Lego">
-                        <div class="circle-img-wrapper">
-                            <i data-lucide="component" style="width:36px;height:36px;"></i>
-                        </div>
-                        <span class="circle-label">Lego Sets</span>
-                    </div>
-                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Cars & Bikes">
+                    <div class="category-circle-item" data-link="catalog">
                         <div class="circle-img-wrapper">
                             <i data-lucide="car-front" style="width:36px;height:36px;"></i>
                         </div>
-                        <span class="circle-label">Cars & Bikes</span>
+                        <span class="circle-label">All Cars</span>
+                    </div>
+                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Supercars">
+                        <div class="circle-img-wrapper">
+                            <i data-lucide="gauge" style="width:36px;height:36px;"></i>
+                        </div>
+                        <span class="circle-label">Supercars</span>
+                    </div>
+                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Hypercars">
+                        <div class="circle-img-wrapper">
+                            <i data-lucide="zap" style="width:36px;height:36px;"></i>
+                        </div>
+                        <span class="circle-label">Hypercars</span>
+                    </div>
+                    <div class="category-circle-item" data-link="catalog" data-filter-type="category" data-filter-val="Classic Cars">
+                        <div class="circle-img-wrapper">
+                            <i data-lucide="car" style="width:36px;height:36px;"></i>
+                        </div>
+                        <span class="circle-label">Classic Cars</span>
                     </div>
                 </div>
 
                 <!-- Shop By Theme -->
                 <div class="section-title-wrapper">
-                    <h2 class="section-title">Shop by Theme</h2>
-                    <a href="#" class="section-view-all" data-link="catalog">View All Themes <i data-lucide="chevron-right"></i></a>
+                    <h2 class="section-title">Shop by Origin</h2>
+                    <a href="#" class="section-view-all" data-link="catalog">View All Cars <i data-lucide="chevron-right"></i></a>
                 </div>
                 <div class="themes-grid">
-                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="Marvel">
+                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="Italian">
                         <div class="theme-card-overlay">
-                            <h3 class="theme-card-title">Marvel</h3>
+                            <h3 class="theme-card-title">Italian</h3>
                         </div>
                         <div style="background: linear-gradient(135deg, #e50914, #121212); width:100%; height:100%;" class="theme-card-img"></div>
                     </div>
-                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="DC Comics">
+                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="German">
                         <div class="theme-card-overlay">
-                            <h3 class="theme-card-title">DC Comics</h3>
+                            <h3 class="theme-card-title">German</h3>
                         </div>
                         <div style="background: linear-gradient(135deg, #0d47a1, #121212); width:100%; height:100%;" class="theme-card-img"></div>
                     </div>
-                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="Anime">
+                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="British">
                         <div class="theme-card-overlay">
-                            <h3 class="theme-card-title">Anime</h3>
+                            <h3 class="theme-card-title">British</h3>
                         </div>
-                        <div style="background: linear-gradient(135deg, #e65100, #121212); width:100%; height:100%;" class="theme-card-img"></div>
+                        <div style="background: linear-gradient(135deg, #1b5e20, #121212); width:100%; height:100%;" class="theme-card-img"></div>
                     </div>
-                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="Disney">
+                    <div class="theme-card" data-link="catalog" data-filter-type="theme" data-filter-val="American">
                         <div class="theme-card-overlay">
-                            <h3 class="theme-card-title">Disney</h3>
+                            <h3 class="theme-card-title">American</h3>
                         </div>
                         <div style="background: linear-gradient(135deg, #4a148c, #121212); width:100%; height:100%;" class="theme-card-img"></div>
                     </div>
@@ -198,7 +197,7 @@
                 <!-- Collection Row 2: Best Selling Action Figures -->
                 <div class="section-title-wrapper">
                     <h2 class="section-title">Best Sellers</h2>
-                    <a href="#" class="section-view-all" data-link="catalog" data-filter-type="category" data-filter-val="Action Figures">View All <i data-lucide="chevron-right"></i></a>
+                    <a href="#" class="section-view-all" data-link="catalog">View All <i data-lucide="chevron-right"></i></a>
                 </div>
                 <div class="product-grid" id="bestsellers-grid">
                     <!-- Rendered Dynamically via app.js -->
@@ -209,20 +208,23 @@
                     <h2 class="section-title">Popular Brands</h2>
                 </div>
                 <div class="brands-row">
-                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Fondjoy">
-                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">FONDJOY</span>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Mercedes-Benz">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">MERCEDES</span>
                     </div>
-                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="ZD Toys">
-                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">ZD TOYS</span>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Lamborghini">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">LAMBORGHINI</span>
                     </div>
-                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Bandai">
-                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">BANDAI</span>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Pagani">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">PAGANI</span>
                     </div>
-                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="McFarlane">
-                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">MCFARLANE</span>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="BMW">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">BMW</span>
                     </div>
-                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Iron Studios">
-                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">IRON STUDIOS</span>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Aston Martin">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">ASTON MARTIN</span>
+                    </div>
+                    <div class="brand-logo-card" data-link="catalog" data-filter-type="brand" data-filter-val="Ford">
+                        <i data-lucide="award"></i> <span style="font-weight:700;margin-left:5px;">FORD</span>
                     </div>
                 </div>
 
@@ -392,16 +394,16 @@
                                     <td class="specs-value" id="spec-material">Premium PVC / ABS</td>
                                 </tr>
                                 <tr>
-                                    <td class="specs-label">Dimensions</td>
-                                    <td class="specs-value" id="spec-dimensions">approx. 7 inches height</td>
+                                    <td class="specs-label">Scale</td>
+                                    <td class="specs-value" id="spec-scale">1:24</td>
                                 </tr>
                                 <tr>
                                     <td class="specs-label">Package Weight</td>
                                     <td class="specs-value" id="spec-weight">450g</td>
                                 </tr>
                                 <tr>
-                                    <td class="specs-label">Articulation</td>
-                                    <td class="specs-value" id="spec-articulation">Over 20+ Joints Articulated</td>
+                                    <td class="specs-label">Features</td>
+                                    <td class="specs-value" id="spec-features">Opening doors</td>
                                 </tr>
                             </table>
                         </div>
@@ -668,12 +670,12 @@
                 <div class="footer-col">
                     <h3 class="footer-col-title">Popular Searches</h3>
                     <div class="footer-tags-cloud">
-                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Iron Man">Iron Man</a>
-                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Batman">Batman</a>
-                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Goku">Goku</a>
-                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Superman">Superman</a>
-                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Lego Marvel">Lego Marvel</a>
-                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Spider-Man">Spider-Man</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Lamborghini">Lamborghini</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Mercedes">Mercedes</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Pagani">Pagani</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="BMW M3">BMW M3</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Mustang">Mustang</a>
+                        <a href="#" class="footer-tag-link" data-link="catalog" data-filter-type="search" data-filter-val="Aston Martin">Aston Martin</a>
                     </div>
                 </div>
 

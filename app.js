@@ -6,424 +6,140 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================
-    // 1. MOCK PRODUCT DATABASE
+    // 1. PRODUCT DATABASE
     // ==========================================
+    // Photos live in assets/products/<folder>/1.jpg, 2.jpg, ... (1.jpg is the cover image)
+    const gallery = (folder, count) => Array.from({ length: count }, (_, i) => `assets/products/${folder}/${i + 1}.jpg`);
+
     const PRODUCTS = [
         {
-            id: 1,
-            title: "Fondjoy Superman 2.0 (Man of Steel) 1/10 Articulated Action Figure",
-            brand: "Fondjoy",
-            category: "Action Figures",
-            theme: "DC Comics",
-            price: 3999,
-            oldPrice: 5999,
-            rating: 4.8,
-            ratingCount: 89,
-            inStock: true,
-            desc: "The definitive Man of Steel action figure by Fondjoy. Featuring a screen-accurate texture, metallic blue coloring, over 22 points of articulation, and multiple interchangeable hands and cape configurations to recreate iconic flight poses.",
-            specifications: {
-                Material: "High-grade PVC, ABS, and Fabric cape",
-                Dimensions: "7.2 inches (18 cm)",
-                Weight: "420g",
-                Articulation: "24 joints"
-            },
-            svgType: "superman"
-        },
-        {
-            id: 2,
-            title: "ZD Toys Iron Man Mark 85 (Endgame) 1/10 Articulated Action Figure",
-            brand: "ZD Toys",
-            category: "Action Figures",
-            theme: "Marvel",
+            id: 101,
+            title: "Mercedes-AMG Vision GT Diecast Model Car (Black & Gold)",
+            brand: "Mercedes-Benz",
+            category: "Supercars",
+            theme: "German",
             price: 2999,
-            oldPrice: 4999,
-            rating: 4.9,
-            ratingCount: 142,
+            oldPrice: 4499,
+            rating: 4.8,
+            ratingCount: 64,
             inStock: true,
-            desc: "ZD Toys presents the Mark LXXXV armor from Avengers: Endgame. Includes highly detailed metallic paint, back repulsor flap details, multiple hand attachments, and glowing paint effects. An essential addition to any Iron Man collection.",
+            desc: "Gloss black Mercedes-AMG Vision GT concept with chrome gold wheels and Panamericana grille. Features working gullwing doors, glowing LED headlights and tail light bar, a detailed cockpit and red brake calipers.",
             specifications: {
-                Material: "ABS & PVC with metallic paint",
-                Dimensions: "7.0 inches (18 cm)",
-                Weight: "380g",
-                Articulation: "20 joints"
+                Material: "Diecast alloy body with ABS plastic parts",
+                Scale: "1:24",
+                Weight: "450g",
+                Features: "Gullwing doors, LED lights & sound, pull-back action"
             },
-            svgType: "ironman"
+            images: gallery("mercedes-amg-vision-gt", 10)
         },
         {
-            id: 3,
-            title: "Bandai Goku S.H. Figuarts Super Saiyan (Awakening Ver) Action Figure",
-            brand: "Bandai",
-            category: "Action Figures",
-            theme: "Anime",
-            price: 4999,
-            oldPrice: 6999,
+            id: 102,
+            title: "Lamborghini Aventador SVJ 63 Diecast Model Car (Red)",
+            brand: "Lamborghini",
+            category: "Supercars",
+            theme: "Italian",
+            price: 2799,
+            oldPrice: 3999,
             rating: 4.7,
-            ratingCount: 63,
+            ratingCount: 58,
             inStock: true,
-            desc: "Imported from Bandai Spirits Japan. S.H. Figuarts Goku features unmatched leg and arm articulation, battle-damaged outfit details, and three swap-in facial expressions (screaming, combat, determined). Perfect for DBZ fans.",
+            desc: "Candy red Aventador SVJ in '63' race livery with a carbon-look roof, rear wing and diffuser. Scissor doors open to reveal a yellow sports interior, finished with black multi-spoke wheels.",
             specifications: {
-                Material: "Premium flexible PVC",
-                Dimensions: "6.0 inches (15 cm)",
-                Weight: "320g",
-                Articulation: "26 joints"
+                Material: "Diecast alloy body with ABS plastic parts",
+                Scale: "1:24",
+                Weight: "420g",
+                Features: "Scissor doors, lights & sound, pull-back action"
             },
-            svgType: "goku"
+            images: gallery("lamborghini-aventador-svj", 5)
         },
         {
-            id: 4,
-            title: "McFarlane Batman (The Dark Knight Trilogy) Gold Label Action Figure",
-            brand: "McFarlane",
-            category: "Action Figures",
-            theme: "DC Comics",
+            id: 103,
+            title: "BMW M3 E30 Diecast Model Car (Chrome Red)",
+            brand: "BMW",
+            category: "Classic Cars",
+            theme: "German",
             price: 2499,
             oldPrice: 3499,
-            rating: 4.6,
-            ratingCount: 55,
-            inStock: true,
-            desc: "Based on the critically acclaimed Dark Knight movie. Designed with Ultra Articulation containing up to 22 moving parts for full range of posing. Comes with a batarang, grapple launcher, collector card, and display stand.",
-            specifications: {
-                Material: "Resilient PVC",
-                Dimensions: "7.0 inches (18 cm)",
-                Weight: "390g",
-                Articulation: "22 joints"
-            },
-            svgType: "batman"
-        },
-        {
-            id: 5,
-            title: "Iron Studios Thanos Deluxe (Infinity War) 1/10 BDS Art Scale Statue",
-            brand: "Iron Studios",
-            category: "Statues",
-            theme: "Marvel",
-            price: 14999,
-            oldPrice: 19999,
-            rating: 5.0,
-            ratingCount: 31,
-            inStock: true,
-            desc: "A breathtaking collector's piece. Hand-painted Thanos BDS Art Scale statue capturing the Mad Titan on a detailed diorama base. Features the complete Infinity Gauntlet with translucent colored stones and an alternate head sculpt.",
-            specifications: {
-                Material: "Polystone / Resin (Hand painted)",
-                Dimensions: "13.8 inches (35 cm)",
-                Weight: "2.1 kg",
-                Articulation: "Static Statue"
-            },
-            svgType: "thanos"
-        },
-        {
-            id: 6,
-            title: "LEGO Marvel Daily Bugle Spider-Man Building Block Set (76178)",
-            brand: "Lego",
-            category: "Lego",
-            theme: "Marvel",
-            price: 24999,
-            oldPrice: 29999,
-            rating: 4.9,
-            ratingCount: 72,
-            inStock: true,
-            desc: "Build the ultimate Marvel offices. This massive 3,772-piece LEGO brick set stands over 32 inches high. Includes 25 iconic minifigures including Spider-Man, Venom, Green Goblin, Carnage, and exclusive media reporters.",
-            specifications: {
-                Material: "ABS Building bricks",
-                Dimensions: "32 inches height (82 cm)",
-                Weight: "4.8 kg",
-                Pieces: "3772 bricks"
-            },
-            svgType: "legobugle"
-        },
-        {
-            id: 7,
-            title: "LEGO DC Batmobile Tumbler Model Brick Building Set (76240)",
-            brand: "Lego",
-            category: "Lego",
-            theme: "DC Comics",
-            price: 18999,
-            oldPrice: 22999,
             rating: 4.8,
-            ratingCount: 48,
+            ratingCount: 47,
             inStock: true,
-            desc: "Recreate the high-speed armored tumbler vehicle from the Dark Knight movie trilogy. Featuring openable roof cockpit, control panel details, and display stand with minifigure Batman and the Joker.",
+            desc: "The legendary E30 M3 in a mirror-chrome red finish with silver cross-spoke wheels. Doors, bonnet and boot all open, the quad headlights light up, and the interior is fully detailed.",
             specifications: {
-                Material: "ABS Building bricks",
-                Dimensions: "6 inches height, 17 inches length",
-                Weight: "3.2 kg",
-                Pieces: "2049 bricks"
+                Material: "Diecast alloy body with ABS plastic parts",
+                Scale: "1:24",
+                Weight: "400g",
+                Features: "Opening doors, bonnet & boot, working headlights"
             },
-            svgType: "legotumbler"
+            images: gallery("bmw-m3-e30", 4)
         },
         {
-            id: 8,
-            title: "Maisto Kawasaki Ninja H2R 1:12 Scale Diecast Model Bike",
-            brand: "Maisto",
-            category: "Cars & Bikes",
-            theme: "Anime",
-            price: 1599,
-            oldPrice: 2499,
-            rating: 4.5,
-            ratingCount: 110,
-            inStock: true,
-            desc: "Highly authentic 1/12 scale diecast model of the Kawasaki Ninja H2R hyperbike. Features steerable handlebars, working rear suspension, realistic kickstand, and detailed engine chassis block.",
-            specifications: {
-                Material: "Diecast Metal alloy with ABS plastic trims",
-                Dimensions: "7.0 inches length",
-                Weight: "220g",
-                Scale: "1:12 Scale"
-            },
-            svgType: "bike"
-        },
-        {
-            id: 9,
-            title: "Disney Pixar Toy Story Signature Buzz Lightyear Interactive Space Figure",
-            brand: "Disney",
-            category: "Action Figures",
-            theme: "Disney",
-            price: 3499,
-            oldPrice: 4499,
-            rating: 4.7,
-            ratingCount: 42,
-            inStock: true,
-            desc: "To infinity and beyond! Official Disney interactive Space Ranger. Features pop-out wings, laser light sound effects, retractable helmet visor, and responsive talkback sensors triggered by voice commands.",
-            specifications: {
-                Material: "ABS and electronic modules",
-                Dimensions: "12 inches (30 cm)",
-                Weight: "980g",
-                Battery: "3 AA required (included)"
-            },
-            svgType: "buzz"
-        },
-        {
-            id: 10,
-            title: "Iron Studios Darth Vader (Obi-Wan) Limited Edition 1/10 BDS Art Statue",
-            brand: "Iron Studios",
-            category: "Statues",
-            theme: "Limited Edition",
-            price: 16999,
-            oldPrice: 21999,
+            id: 104,
+            title: "Pagani Huayra Diecast Model Car (Purple Carbon)",
+            brand: "Pagani",
+            category: "Hypercars",
+            theme: "Italian",
+            price: 4999,
+            oldPrice: 6999,
             rating: 4.9,
-            ratingCount: 28,
-            inStock: false,
-            desc: "Limited Edition Darth Vader statue based on his climatic battle in the Obi-Wan Kenobi series. Displays Vader standing amidst dynamic rock debris, brandishing his crimson red lightsaber. Highly collectible.",
+            ratingCount: 39,
+            inStock: true,
+            desc: "Metallic purple Pagani Huayra with carbon-fibre detailing and Italian tricolour stripe. Gullwing doors and front and rear clamshells open to show the red leather cockpit and detailed V12 engine bay.",
             specifications: {
-                Material: "Polystone (Hand painted)",
-                Dimensions: "9.6 inches (24.5 cm)",
-                Weight: "1.2 kg",
-                Articulation: "Static Statue"
+                Material: "Diecast alloy body with ABS plastic parts",
+                Scale: "1:18",
+                Weight: "1.1 kg",
+                Features: "Gullwing doors, opening engine cover, detailed interior"
             },
-            svgType: "vader"
+            images: gallery("pagani-huayra", 4)
+        },
+        {
+            id: 105,
+            title: "Ford Mustang Fastback 58 Racer Diecast Model Car (Black)",
+            brand: "Ford",
+            category: "Classic Cars",
+            theme: "American",
+            price: 1799,
+            oldPrice: 2499,
+            rating: 4.6,
+            ratingCount: 52,
+            inStock: true,
+            desc: "Classic Mustang fastback in black '58 Racer' livery with white racing stripes and chrome bumpers. Opening doors and bonnet reveal a detailed engine and interior.",
+            specifications: {
+                Material: "Diecast alloy body with ABS plastic parts",
+                Scale: "1:32",
+                Weight: "300g",
+                Features: "Opening doors & bonnet, pull-back action"
+            },
+            images: gallery("ford-mustang-fastback", 3)
+        },
+        {
+            id: 106,
+            title: "Aston Martin Valkyrie AMR Diecast Model Car (Racing Green)",
+            brand: "Aston Martin",
+            category: "Hypercars",
+            theme: "British",
+            price: 2999,
+            oldPrice: 3999,
+            rating: 4.7,
+            ratingCount: 33,
+            inStock: true,
+            desc: "Aston Martin Valkyrie AMR hypercar in metallic racing green with lime accents and '001' race numbers. Upward-opening doors and a detailed cockpit, sitting on black multi-spoke wheels.",
+            specifications: {
+                Material: "Diecast alloy body with ABS plastic parts",
+                Scale: "1:24",
+                Weight: "420g",
+                Features: "Opening doors, lights & sound, pull-back action"
+            },
+            images: gallery("aston-martin-valkyrie", 3)
         }
     ];
 
     // ==========================================
-    // 2. VECTOR SVG GENERATOR FOR PREMIUM CARDS
+    // 2. PRODUCT IMAGE HELPER
     // ==========================================
-    function getProductSVG(type, width = "100%", height = "100%") {
-        const svgStyles = `style="width:${width}; height:${height}; display:block;"`;
-        
-        switch(type) {
-            case "superman":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-sup" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#0a1931" />
-                            <stop offset="100%" stop-color="#15305b" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-sup)" />
-                    <!-- Shield Border -->
-                    <polygon points="100,25 170,55 155,135 100,175 45,135 30,55" fill="#f5b041" stroke="#e50914" stroke-width="8" stroke-linejoin="round"/>
-                    <polygon points="100,35 155,60 142,125 100,158 58,125 45,60" fill="#e50914" stroke="#e50914" stroke-width="2" stroke-linejoin="round"/>
-                    <!-- 'S' Symbol -->
-                    <path d="M70,75 C70,60 130,50 130,70 C130,85 75,90 75,115 C75,135 130,135 130,120 C130,110 120,110 120,115 C120,125 90,125 90,115 C90,105 145,95 145,72 C145,45 60,45 60,70 Z" fill="#f5b041" />
-                </svg>`;
-            
-            case "ironman":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-iron" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#210002" />
-                            <stop offset="100%" stop-color="#540b0e" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-iron)" />
-                    <!-- Helmet Outline -->
-                    <path d="M60,50 L140,50 L155,90 L145,150 L100,170 L55,150 L45,90 Z" fill="#9e0007" stroke="#d32f2f" stroke-width="4" />
-                    <!-- Face Plate (Gold) -->
-                    <path d="M75,65 L125,65 L135,110 L125,140 L100,150 L75,140 L65,110 Z" fill="#f5b041" />
-                    <!-- Eyes (Glowing Light Blue) -->
-                    <polygon points="80,95 100,95 95,102 80,102" fill="#e0f7fa" stroke="#00bcd4" stroke-width="1.5" filter="drop-shadow(0px 0px 3px #00bcd4)" />
-                    <polygon points="120,95 100,95 105,102 120,102" fill="#e0f7fa" stroke="#00bcd4" stroke-width="1.5" filter="drop-shadow(0px 0px 3px #00bcd4)" />
-                    <!-- Mouth Vent -->
-                    <line x1="85" y1="125" x2="115" y2="125" stroke="#333" stroke-width="3" stroke-linecap="round" />
-                </svg>`;
-
-            case "goku":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-goku" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#ff7b00" />
-                            <stop offset="100%" stop-color="#bf360c" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-goku)" />
-                    <!-- Dragon Ball Star Outline -->
-                    <circle cx="100" cy="100" r="50" fill="#ffb300" stroke="#ffe082" stroke-width="4" filter="drop-shadow(0px 0px 8px rgba(255,179,0,0.6))" />
-                    <!-- Five-Pointed Star in Red -->
-                    <polygon points="100,75 106,90 122,90 109,100 114,115 100,105 86,115 91,100 78,90 94,90" fill="#e50914" />
-                </svg>`;
-
-            case "batman":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-bat" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#121212" />
-                            <stop offset="100%" stop-color="#2a2a2a" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-bat)" />
-                    <!-- Yellow Oval -->
-                    <ellipse cx="100" cy="100" rx="60" ry="38" fill="#f5b041" stroke="#f5b041" stroke-width="2" />
-                    <!-- Bat Logo -->
-                    <path d="M100,75 C94,75 92,85 86,85 C80,85 64,68 50,88 C50,110 80,125 100,125 C120,125 150,110 150,88 C136,68 120,85 114,85 C108,85 106,75 100,75 Z" fill="#000000" />
-                    <path d="M100,75 L96,68 L98,80 Z" fill="#000000" />
-                    <path d="M100,75 L104,68 L102,80 Z" fill="#000000" />
-                </svg>`;
-
-            case "thanos":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-thanos" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#311b92" />
-                            <stop offset="100%" stop-color="#1a0c40" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-thanos)" />
-                    <!-- Infinity Gauntlet Silhouette (Gold) -->
-                    <path d="M80,150 L80,95 C80,90 85,85 90,85 C95,85 100,90 100,95 L100,150 Z" fill="#d4af37" />
-                    <path d="M92,150 L92,80 C92,75 98,72 102,72 C106,72 110,75 110,80 L110,150 Z" fill="#d4af37" />
-                    <path d="M105,150 L105,88 C105,84 110,80 114,80 C118,80 122,84 122,88 L122,150 Z" fill="#d4af37" />
-                    <path d="M118,150 L118,100 C118,97 122,94 125,94 C128,94 132,97 132,100 L132,150 Z" fill="#d4af37" />
-                    <!-- Palm/Thumb Base -->
-                    <path d="M72,160 L140,160 L132,115 L78,115 Z" fill="#c5a028" />
-                    <path d="M68,140 L78,110 L85,120 Z" fill="#d4af37" />
-                    <!-- Infinity Stones (Glowing circles) -->
-                    <circle cx="90" cy="100" r="4" fill="#311b92" filter="drop-shadow(0 0 2px blue)" /> <!-- Space (Blue) -->
-                    <circle cx="101" cy="92" r="4" fill="#ffeb3b" filter="drop-shadow(0 0 2px yellow)" /> <!-- Mind (Yellow) -->
-                    <circle cx="113" cy="98" r="4" fill="#e50914" filter="drop-shadow(0 0 2px red)" /> <!-- Reality (Red) -->
-                    <circle cx="125" cy="110" r="4" fill="#4caf50" filter="drop-shadow(0 0 2px green)" /> <!-- Time (Green) -->
-                    <circle cx="73" cy="125" r="4" fill="#ff9800" filter="drop-shadow(0 0 2px orange)" /> <!-- Soul (Orange) -->
-                    <circle cx="104" cy="130" r="8" fill="#9c27b0" filter="drop-shadow(0 0 4px purple)" /> <!-- Power (Purple) -->
-                </svg>`;
-
-            case "legobugle":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-lego" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#333333" />
-                            <stop offset="100%" stop-color="#000000" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-lego)" />
-                    <!-- Red Lego brick -->
-                    <rect x="50" y="80" width="100" height="60" rx="4" fill="#e50914" stroke="#b71c1c" stroke-width="2" />
-                    <circle cx="70" cy="72" r="10" fill="#e50914" stroke="#b71c1c" stroke-width="2" />
-                    <circle cx="100" cy="72" r="10" fill="#e50914" stroke="#b71c1c" stroke-width="2" />
-                    <circle cx="130" cy="72" r="10" fill="#e50914" stroke="#b71c1c" stroke-width="2" />
-                    <!-- Daily Bugle Building outline -->
-                    <path d="M90,30 L110,30 L110,65 L90,65 Z" fill="#78909c" />
-                    <text x="100" y="42" font-family="'Outfit'" font-weight="900" font-size="8" fill="#fff" text-anchor="middle">BUGLE</text>
-                </svg>`;
-
-            case "legotumbler":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-tumbler" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#1c1c1c" />
-                            <stop offset="100%" stop-color="#121212" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-tumbler)" />
-                    <!-- Batmobile silhouette -->
-                    <rect x="40" y="90" width="120" height="40" rx="10" fill="#000" stroke="#333" stroke-width="3" />
-                    <!-- Big tires -->
-                    <circle cx="60" cy="130" r="22" fill="#222" stroke="#444" stroke-width="2" />
-                    <circle cx="60" cy="130" r="10" fill="#111" />
-                    <circle cx="140" cy="130" r="22" fill="#222" stroke="#444" stroke-width="2" />
-                    <circle cx="140" cy="130" r="10" fill="#111" />
-                    <!-- Yellow lights -->
-                    <ellipse cx="150" cy="98" rx="6" ry="3" fill="#ffb300" filter="drop-shadow(0 0 3px #ffb300)" />
-                    <ellipse cx="138" cy="98" rx="3" ry="3" fill="#ffb300" />
-                </svg>`;
-
-            case "bike":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-bike" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#1b5e20" />
-                            <stop offset="100%" stop-color="#0a230d" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-bike)" />
-                    <!-- Wheels -->
-                    <circle cx="50" cy="115" r="28" fill="none" stroke="#222" stroke-width="8" />
-                    <circle cx="150" cy="115" r="28" fill="none" stroke="#222" stroke-width="8" />
-                    <!-- Frame -->
-                    <polygon points="50,115 90,80 140,80 150,115 105,115" fill="none" stroke="#e50914" stroke-width="5" stroke-linejoin="round" />
-                    <!-- Body Panels (Green/Black) -->
-                    <path d="M85,75 L135,75 L125,100 L75,100 Z" fill="#2e7d32" />
-                    <polygon points="135,75 155,75 145,95 125,95" fill="#111" />
-                </svg>`;
-
-            case "buzz":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-buzz" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#ffffff" />
-                            <stop offset="100%" stop-color="#e2e8f0" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-buzz)" />
-                    <!-- Buzz space chestplate -->
-                    <path d="M40,70 L160,70 L140,140 L60,140 Z" fill="#ffffff" stroke="#d2d2d2" stroke-width="4" />
-                    <rect x="55" y="76" width="90" height="22" fill="#4caf50" rx="3" />
-                    <!-- Action buttons -->
-                    <circle cx="70" cy="87" r="6" fill="#e50914" />
-                    <circle cx="100" cy="87" r="6" fill="#4caf50" />
-                    <circle cx="130" cy="87" r="6" fill="#2196f3" />
-                    <!-- Star Command logo -->
-                    <polygon points="100,105 110,120 90,120" fill="#ffb300" />
-                </svg>`;
-
-            case "vader":
-                return `
-                <svg viewBox="0 0 200 200" ${svgStyles}>
-                    <defs>
-                        <linearGradient id="bg-vader" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#1c1c1c" />
-                            <stop offset="100%" stop-color="#000000" />
-                        </linearGradient>
-                    </defs>
-                    <rect width="200" height="200" rx="10" fill="url(#bg-vader)" />
-                    <!-- Vader Helmet Outline -->
-                    <path d="M60,60 C60,40 140,40 140,60 C140,85 160,125 165,140 L35,140 C40,125 60,85 60,60 Z" fill="#111" stroke="#222" stroke-width="2" />
-                    <!-- Mask Face Details -->
-                    <path d="M80,85 L120,85 L115,105 L85,105 Z" fill="#000" />
-                    <circle cx="90" cy="95" r="6" fill="#0c0c0c" />
-                    <circle cx="110" cy="95" r="6" fill="#0c0c0c" />
-                    <polygon points="100,105 92,125 108,125" fill="#111" />
-                    <!-- Red Glow Saber -->
-                    <line x1="30" y1="170" x2="170" y2="170" stroke="#e50914" stroke-width="6" stroke-linecap="round" filter="drop-shadow(0 0 6px #e50914)" />
-                </svg>`;
-            
-            default:
-                return `<svg viewBox="0 0 200 200" ${svgStyles}><rect width="200" height="200" fill="#333" /></svg>`;
-        }
+    function getProductImage(prod, index = 0) {
+        const src = prod.images[index] || prod.images[0];
+        return `<img src="${src}" alt="${prod.title}" class="product-photo" loading="lazy">`;
     }
 
     // ==========================================
@@ -465,7 +181,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedCart = localStorage.getItem('sh_cart');
         if (savedCart) {
             try {
-                state.cart = JSON.parse(savedCart);
+                // Re-link saved items to the current catalog; drop products that no longer exist
+                state.cart = JSON.parse(savedCart)
+                    .map(item => ({ product: PRODUCTS.find(p => p.id === item.product?.id), quantity: item.quantity }))
+                    .filter(item => item.product);
                 updateCartUI();
             } catch (e) {
                 state.cart = [];
@@ -615,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 suggestionBox.innerHTML = matches.map(prod => `
                     <div class="suggestion-item" data-product-id="${prod.id}">
                         <div class="suggestion-img">
-                            ${getProductSVG(prod.svgType, "100%", "100%")}
+                            ${getProductImage(prod)}
                         </div>
                         <div class="suggestion-info">
                             <span class="suggestion-title">${prod.title.substring(0, 45)}...</span>
@@ -781,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
             listContainer.innerHTML = state.cart.map(item => `
                 <div class="cart-item">
                     <div class="cart-item-img-wrapper">
-                        ${getProductSVG(item.product.svgType, "100%", "100%")}
+                        ${getProductImage(item.product)}
                     </div>
                     <div class="cart-item-details">
                         <a href="#" class="cart-item-title" data-product-nav="${item.product.id}">${item.product.title.substring(0, 45)}...</a>
@@ -886,7 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${(prod.oldPrice && !isSoldOut) ? `<span class="product-card-badge badge-sale">${Math.round(((prod.oldPrice - prod.price) / prod.oldPrice) * 100)}% OFF</span>` : ''}
                 <div class="product-card-media" data-link="detail" data-product-id="${prod.id}">
                     <div class="product-card-img">
-                        ${getProductSVG(prod.svgType)}
+                        ${getProductImage(prod)}
                     </div>
                 </div>
                 <div class="product-card-info">
@@ -925,9 +644,9 @@ document.addEventListener('DOMContentLoaded', () => {
             newLaunchesGrid.innerHTML = launches.map(getProductCardHTML).join('');
         }
 
-        // Grab products 4-8 for bestsellers
+        // Grab last 4 for bestsellers
         if (bestSellersGrid) {
-            const bestSellers = PRODUCTS.slice(3, 7);
+            const bestSellers = PRODUCTS.slice(-4);
             bestSellersGrid.innerHTML = bestSellers.map(getProductCardHTML).join('');
         }
 
@@ -1213,9 +932,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const qtyInput = document.getElementById('detail-qty-input');
 
         const specMaterial = document.getElementById('spec-material');
-        const specDimensions = document.getElementById('spec-dimensions');
+        const specScale = document.getElementById('spec-scale');
         const specWeight = document.getElementById('spec-weight');
-        const specArticulation = document.getElementById('spec-articulation');
+        const specFeatures = document.getElementById('spec-features');
         const relatedGrid = document.getElementById('related-products-grid');
 
         // Breadcrumbs
@@ -1229,38 +948,28 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        // Render main illustration SVG as image representation
+        // Main photo (cover image first)
         if (mainImg) {
-            // We replace main image src wrapper content dynamically or load SVG
-            const wrapper = mainImg.closest('.detail-main-image-wrapper');
-            if (wrapper) {
-                wrapper.innerHTML = getProductSVG(prod.svgType, "100%", "100%");
-            }
+            mainImg.src = prod.images[0];
+            mainImg.alt = prod.title;
         }
 
-        // Setup thumbnails (Generate 3 mock color variants using CSS filters)
+        // Thumbnails: one per photo of this product
         if (thumbsList) {
-            thumbsList.innerHTML = `
-                <button class="detail-thumb-btn active" data-filter="none">
-                    ${getProductSVG(prod.svgType, "48px", "48px")}
+            thumbsList.innerHTML = prod.images.map((src, i) => `
+                <button class="detail-thumb-btn${i === 0 ? ' active' : ''}" data-index="${i}">
+                    <img src="${src}" alt="${prod.title} - photo ${i + 1}" loading="lazy">
                 </button>
-                <button class="detail-thumb-btn" data-filter="hue-rotate(90deg)">
-                    <div style="filter: hue-rotate(90deg)">${getProductSVG(prod.svgType, "48px", "48px")}</div>
-                </button>
-                <button class="detail-thumb-btn" data-filter="hue-rotate(240deg)">
-                    <div style="filter: hue-rotate(240deg)">${getProductSVG(prod.svgType, "48px", "48px")}</div>
-                </button>
-            `;
+            `).join('');
 
             thumbsList.querySelectorAll('.detail-thumb-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     thumbsList.querySelectorAll('.detail-thumb-btn').forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    
-                    // Apply hue filter to main detail illustration
-                    const mainSVG = document.querySelector('.detail-main-image-wrapper svg');
-                    if (mainSVG) {
-                        mainSVG.style.filter = btn.getAttribute('data-filter') === 'none' ? 'none' : btn.getAttribute('data-filter');
+
+                    // Swap main photo to the clicked thumbnail
+                    if (mainImg) {
+                        mainImg.src = prod.images[parseInt(btn.getAttribute('data-index'))];
                     }
                 });
             });
@@ -1328,20 +1037,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (qtyInput) qtyInput.value = state.detailQty;
 
         // Specifications
-        if (specMaterial) specMaterial.innerText = prod.specifications.Material || 'PVC';
-        if (specDimensions) specDimensions.innerText = prod.specifications.Dimensions || '7 inches';
+        if (specMaterial) specMaterial.innerText = prod.specifications.Material || 'Diecast alloy';
+        if (specScale) specScale.innerText = prod.specifications.Scale || 'N/A';
         if (specWeight) specWeight.innerText = prod.specifications.Weight || 'N/A';
-        if (specArticulation) specArticulation.innerText = prod.specifications.Articulation || 'Static';
+        if (specFeatures) specFeatures.innerText = prod.specifications.Features || 'N/A';
 
-        // Render Related Products (products matching the same theme, exclude self)
+        // Render Related Products (same theme first, topped up with others to always show 4)
         if (relatedGrid) {
-            const related = PRODUCTS.filter(p => p.theme === prod.theme && p.id !== prod.id).slice(0, 4);
-            if (related.length === 0) {
-                // If nothing in same theme, load any 4
-                relatedGrid.innerHTML = PRODUCTS.filter(p => p.id !== prod.id).slice(0, 4).map(getProductCardHTML).join('');
-            } else {
-                relatedGrid.innerHTML = related.map(getProductCardHTML).join('');
-            }
+            const others = PRODUCTS.filter(p => p.id !== prod.id);
+            const related = [
+                ...others.filter(p => p.theme === prod.theme),
+                ...others.filter(p => p.theme !== prod.theme)
+            ].slice(0, 4);
+            relatedGrid.innerHTML = related.map(getProductCardHTML).join('');
 
             // Bind listeners inside related grid
             relatedGrid.querySelectorAll('.quick-buy-btn').forEach(btn => {
@@ -1460,7 +1168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutList.innerHTML = state.cart.map(item => `
             <div class="checkout-item">
                 <div class="checkout-item-img">
-                    ${getProductSVG(item.product.svgType, "100%", "100%")}
+                    ${getProductImage(item.product)}
                 </div>
                 <div class="checkout-item-details">
                     <span class="checkout-item-title">${item.product.title.substring(0, 35)}...</span>
