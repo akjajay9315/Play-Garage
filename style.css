@@ -830,6 +830,7 @@ body.light-theme .carousel-overlay {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: 50% 60%; /* portrait shots have the car slightly below centre */
     display: block;
 }
 
@@ -993,15 +994,10 @@ body.light-theme .card-btn {
 }
 
 .brand-logo-card svg {
+    color: var(--text-secondary);
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-}
-
-.brand-logo-card svg {
-    color: var(--text-secondary);
-    width: 100%;
-    height: 100%;
 }
 
 .brand-logo-card:hover {
@@ -1216,8 +1212,8 @@ body.light-theme .card-btn {
 
 .detail-layout {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 48px;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
     margin-bottom: 64px;
 }
 
@@ -1275,13 +1271,14 @@ body.light-theme .card-btn {
     overflow: hidden;
 }
 
-/* Whole photo always visible, never larger than the frame */
+/* Photo fills the whole frame (no empty side bars) */
 .detail-main-image {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: 50% 60%;
     transition: transform 0.3s ease;
 }
 
@@ -1290,6 +1287,11 @@ body.light-theme .card-btn {
 }
 
 /* Detail Info */
+#product-detail-stars,
+.detail-rating .rating-count {
+    white-space: nowrap;
+}
+
 .detail-info {
     display: flex;
     flex-direction: column;
@@ -1313,8 +1315,9 @@ body.light-theme .card-btn {
 
 .detail-meta-row {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
+    gap: 8px 20px;
     font-size: 0.85rem;
     color: var(--text-secondary);
     border-bottom: 1px solid var(--border-color);
@@ -2351,6 +2354,25 @@ body.light-theme .card-btn {
 }
 
 @media (max-width: 576px) {
+    /* Top bar: one line, promo shortened, toggle without label */
+    .top-bar {
+        height: auto;
+        padding: 6px 0;
+        font-size: 0.7rem;
+    }
+    .top-bar .container {
+        justify-content: space-between;
+        gap: 8px;
+    }
+    .top-bar-promo {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+    }
+    .theme-switch-wrapper span {
+        display: none;
+    }
     /* Header: logo + icons on row 1, full-width search on row 2 */
     .main-header {
         height: auto;
@@ -2378,14 +2400,15 @@ body.light-theme .card-btn {
     .header-btn {
         padding: 6px;
     }
-    .detail-meta-row {
-        flex-wrap: wrap;
-        gap: 8px 16px;
-    }
     .detail-meta-row .separator {
         display: none;
     }
-    #product-detail-stars {
+    .catalog-header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    .catalog-results-count,
+    .catalog-sort-wrapper span {
         white-space: nowrap;
     }
     .product-grid {

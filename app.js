@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Mercedes-AMG Vision GT Diecast Model Car (Black & Gold)",
             brand: "Mercedes-Benz",
             category: "Supercars",
-            theme: "German",
             price: 2999,
             oldPrice: 4499,
             rating: 4.8,
@@ -37,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Lamborghini Aventador SVJ 63 Diecast Model Car (Red)",
             brand: "Lamborghini",
             category: "Supercars",
-            theme: "Italian",
             price: 2799,
             oldPrice: 3999,
             rating: 4.7,
@@ -57,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "BMW M3 E30 Diecast Model Car (Chrome Red)",
             brand: "BMW",
             category: "Classic Cars",
-            theme: "German",
             price: 2499,
             oldPrice: 3499,
             rating: 4.8,
@@ -77,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Pagani Huayra Diecast Model Car (Purple Carbon)",
             brand: "Pagani",
             category: "Hypercars",
-            theme: "Italian",
             price: 4999,
             oldPrice: 6999,
             rating: 4.9,
@@ -97,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Ford Mustang Fastback 58 Racer Diecast Model Car (Black)",
             brand: "Ford",
             category: "Classic Cars",
-            theme: "American",
             price: 1799,
             oldPrice: 2499,
             rating: 4.6,
@@ -117,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "Aston Martin Valkyrie AMR Diecast Model Car (Racing Green)",
             brand: "Aston Martin",
             category: "Hypercars",
-            theme: "British",
             price: 2999,
             oldPrice: 3999,
             rating: 4.7,
@@ -152,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         filters: {
             searchQuery: '',
             categories: [],
-            themes: [],
             brands: [],
             priceMin: null,
             priceMax: null,
@@ -224,8 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const filterVal = data.filterVal;
                 if (data.filterType === 'category') {
                     state.filters.categories = [filterVal];
-                } else if (data.filterType === 'theme') {
-                    state.filters.themes = [filterVal];
                 } else if (data.filterType === 'brand') {
                     state.filters.brands = [filterVal];
                 } else if (data.filterType === 'search') {
@@ -320,8 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const matches = PRODUCTS.filter(p => 
                 p.title.toLowerCase().includes(query) ||
                 p.brand.toLowerCase().includes(query) ||
-                p.category.toLowerCase().includes(query) ||
-                p.theme.toLowerCase().includes(query)
+                p.category.toLowerCase().includes(query)
             ).slice(0, 5); // Limit 5
 
             if (matches.length === 0) {
@@ -609,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
                 <div class="product-card-info">
-                    <span class="product-card-theme">${prod.theme}</span>
+                    <span class="product-card-theme">${prod.category}</span>
                     <h3 class="product-card-title" data-link="detail" data-product-id="${prod.id}">${prod.title}</h3>
                     <div class="product-card-rating">
                         <i data-lucide="star" style="width:12px;fill:#ffb300;stroke:none;"></i>
@@ -689,11 +679,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 9b. Render Catalog Filter Options Sidebar
     function renderFiltersSidebar() {
         const categories = [...new Set(PRODUCTS.map(p => p.category))];
-        const themes = [...new Set(PRODUCTS.map(p => p.theme))];
         const brands = [...new Set(PRODUCTS.map(p => p.brand))];
 
         const catList = document.getElementById('category-filter-list');
-        const themeList = document.getElementById('theme-filter-list');
         const brandList = document.getElementById('brand-filter-list');
 
         if (catList) {
@@ -715,31 +703,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         state.filters.categories.push(val);
                     } else {
                         state.filters.categories = state.filters.categories.filter(c => c !== val);
-                    }
-                    renderCatalog();
-                });
-            });
-        }
-
-        if (themeList) {
-            themeList.innerHTML = themes.map(th => `
-                <li>
-                    <label class="filter-checkbox-wrapper">
-                        <input type="checkbox" class="theme-filter-input" value="${th}"
-                            ${state.filters.themes.includes(th) ? 'checked' : ''}>
-                        <span class="filter-checkbox"><i data-lucide="check" style="width:12px;"></i></span>
-                        <span>${th}</span>
-                    </label>
-                </li>
-            `).join('');
-
-            themeList.querySelectorAll('.theme-filter-input').forEach(input => {
-                input.addEventListener('change', () => {
-                    const val = input.value;
-                    if (input.checked) {
-                        state.filters.themes.push(val);
-                    } else {
-                        state.filters.themes = state.filters.themes.filter(t => t !== val);
                     }
                     renderCatalog();
                 });
@@ -790,19 +753,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const matchesSearch = 
                     prod.title.toLowerCase().includes(query) ||
                     prod.brand.toLowerCase().includes(query) ||
-                    prod.category.toLowerCase().includes(query) ||
-                    prod.theme.toLowerCase().includes(query);
+                    prod.category.toLowerCase().includes(query);
                 if (!matchesSearch) return false;
             }
 
             // Categories Filter
             if (state.filters.categories.length > 0) {
                 if (!state.filters.categories.includes(prod.category)) return false;
-            }
-
-            // Themes Filter
-            if (state.filters.themes.length > 0) {
-                if (!state.filters.themes.includes(prod.theme)) return false;
             }
 
             // Brands Filter
@@ -872,7 +829,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clear Filters Button binds
     function resetFilters(refreshUI = true) {
         state.filters.categories = [];
-        state.filters.themes = [];
         state.filters.brands = [];
         state.filters.priceMin = null;
         state.filters.priceMax = null;
@@ -976,7 +932,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Metadata
-        if (themeText) themeText.innerText = prod.theme;
+        if (themeText) themeText.innerText = prod.category;
         if (titleText) titleText.innerText = prod.title;
         if (brandText) brandText.innerText = prod.brand;
         if (descText) descText.innerText = prod.desc;
@@ -1042,12 +998,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (specWeight) specWeight.innerText = prod.specifications.Weight || 'N/A';
         if (specFeatures) specFeatures.innerText = prod.specifications.Features || 'N/A';
 
-        // Render Related Products (same theme first, topped up with others to always show 4)
+        // Render Related Products (same category first, topped up with others to always show 4)
         if (relatedGrid) {
             const others = PRODUCTS.filter(p => p.id !== prod.id);
             const related = [
-                ...others.filter(p => p.theme === prod.theme),
-                ...others.filter(p => p.theme !== prod.theme)
+                ...others.filter(p => p.category === prod.category),
+                ...others.filter(p => p.category !== prod.category)
             ].slice(0, 4);
             relatedGrid.innerHTML = related.map(getProductCardHTML).join('');
 
